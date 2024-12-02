@@ -72,7 +72,7 @@ pub fn run() {
     );
 
     println!(
-        "Total number of tolerated safe reports: {}",
+        "Total number of safe reports damped: {}",
         calc_safe_reports_damped(&parsed)
     );
 }
