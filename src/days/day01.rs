@@ -14,18 +14,11 @@ pub fn run() {
         list2.push(eles[1]);
     }
 
-    println!(
-        "Total distance between lists: {}",
-        total_distance_between_lists(&mut list1, &mut list2)
-    );
-
-    println!(
-        "Similarity between lists: {}",
-        similarity_between_lists(&list1, &list2)
-    );
+    println!("Part1 Result: {}", part_1(&mut list1, &mut list2));
+    println!("Part2 Result: {}", part_2(&list1, &list2));
 }
 
-fn total_distance_between_lists(list1: &mut [u64], list2: &mut [u64]) -> u64 {
+fn part_1(list1: &mut [u64], list2: &mut [u64]) -> u64 {
     list1.sort_unstable();
     list2.sort_unstable();
 
@@ -41,7 +34,7 @@ assuming lists are sorted by previous challenge
 We gotta check if it's sorted first and sort it,
 i just think this is clean as of now and based on code structure.
 */
-fn similarity_between_lists(list1: &[u64], list2: &[u64]) -> u64 {
+fn part_2(list1: &[u64], list2: &[u64]) -> u64 {
     let mut total = 0;
     let mut i = 0;
     let mut j = 0;

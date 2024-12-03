@@ -1,3 +1,19 @@
+pub fn run() {
+    let input = std::fs::read_to_string("input/day02.txt").unwrap();
+
+    let parsed: Vec<Vec<u64>> = input
+        .lines()
+        .map(|line| {
+            line.split_whitespace()
+                .map(|num| num.parse().unwrap())
+                .collect()
+        })
+        .collect();
+
+    println!("Part1 Result: {}", part_1(&parsed));
+    println!("Part2 Result: {}", part_2(&parsed));
+}
+
 fn is_report_safe(report: &[u64]) -> bool {
     let mut ascending = true;
     let mut descending = true;
@@ -25,14 +41,14 @@ fn is_report_safe(report: &[u64]) -> bool {
     true
 }
 
-fn calc_safe_reports(reports: &[Vec<u64>]) -> u64 {
+fn part_1(reports: &[Vec<u64>]) -> u64 {
     reports
         .iter()
         .filter(|report| is_report_safe(report))
         .count() as u64
 }
 
-fn calc_safe_reports_damped(reports: &[Vec<u64>]) -> u64 {
+fn part_2(reports: &[Vec<u64>]) -> u64 {
     reports
         .iter()
         .filter(|report| {
@@ -52,27 +68,4 @@ fn calc_safe_reports_damped(reports: &[Vec<u64>]) -> u64 {
             false
         })
         .count() as u64
-}
-
-pub fn run() {
-    let input = std::fs::read_to_string("input/day02.txt").unwrap();
-
-    let parsed: Vec<Vec<u64>> = input
-        .lines()
-        .map(|line| {
-            line.split_whitespace()
-                .map(|num| num.parse().unwrap())
-                .collect()
-        })
-        .collect();
-
-    println!(
-        "Total number of safe reports: {}",
-        calc_safe_reports(&parsed)
-    );
-
-    println!(
-        "Total number of safe reports damped: {}",
-        calc_safe_reports_damped(&parsed)
-    );
 }

@@ -7,6 +7,7 @@ fn main() {
         match day.trim() {
             "1" => day01::run(),
             "2" => day02::run(),
+            "3" => day03::run(),
             _ => println!("Not impl'd yet!"),
         }
     } else {
